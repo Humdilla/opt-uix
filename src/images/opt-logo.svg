@@ -5,6 +5,8 @@
       <rect x="40" y="0" width="20" height="51" fill="#000000"/>
     </mask>
   </defs>
-  <circle cx="50" cy="50" r="40" fill="none" stroke="#666666" stroke-width="10" mask="url(#circle-mask)"/>
-  <rect x="45" y="0" width="10" height="51" fill="#138db7"/>
+  <circle cx="50" cy="50" r="40" fill="none" fill-opacity="0" stroke="#666666" stroke-width="10" filter="url(#blur-lines)" mask="url(#circle-mask)"/>
+  <path stroke-width="10" stroke="#138db7" d="
+    M 50 0
+    V 50"/>
 </svg>

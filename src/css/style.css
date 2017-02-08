@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Bitter', serif;
+}
+
+.opt-form {
+  width: max-content;
+}
+
+/* RADIO BUTTON */
+
+.opt-radio {
+  display: none;
+}
+.opt-radio + label {
+  display: block;
+  font-size: 1.5em;
+  color: #577394;
+  background-color: #AAA;
+  transition: color .5s, border-color .5s;
+}
+
+/* Borders */
+.opt-radio + label {
+  border: 2px solid #577394;
+  border-bottom-width: 0px;
+}
+.opt-radio + label:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.opt-radio + label:last-of-type {
+  border-bottom-width: 2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.opt-radio + label:hover {
+  border-width: 2px;
+}
+.opt-radio + label:hover + .opt-radio + label {
+  border-top-width: 0px;
+}
+
+.opt-radio + label svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+}
+
+.opt-radio + label svg > * {
+  stroke: #577394;
+  transition: stroke .5s;
+}
+.opt-radio:checked + label svg {
+  filter: drop-shadow(0px 0px 3px #38ccff);
+}
+.opt-radio:checked + label svg > * {
+  stroke: #38ccff;
+}
+
+.opt-radio:not(:checked) + label:hover {
+  filter: drop-shadow(0px 0px 2px #3eb6e0);
+  border-color: #3eb6e0;
+  color: #3eb6e0;
+}
+.opt-radio:not(:checked) + label:hover svg > * {
+  stroke: #3eb6e0;
+}
+
+.opt-radio:checked + label:hover {
+  filter: drop-shadow(0px 0px 2px #3eb6e0);
+  border-color: #3eb6e0;
+  color: #3eb6e0;
+}
+
+/* BUTTON */
+.opt-button {
+  border: none;
+  font-size: 1.5em;
+  border-radius: 5px;
+}

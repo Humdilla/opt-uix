@@ -1,0 +1,22 @@
+{
+  "name": "inline-svg",
+  "version": "1.0.0",
+  "description": "An svg inliner.",
+  "main": "inline-svg.js",
+  "scripts": {
+    "test": "mocha \"test/*.js\""
+  },
+  "keywords": [
+    "svg"
+  ],
+  "author": "Humdilla",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7"
+  }
+}
