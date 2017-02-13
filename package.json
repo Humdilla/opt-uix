@@ -12,6 +12,7 @@
   "author": "Humdilla",
   "license": "ISC",
   "dependencies": {
+    "htmlparser2": "^3.9.2",
     "minimist": "^1.2.0"
   },
   "devDependencies": {
