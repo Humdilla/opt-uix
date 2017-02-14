@@ -1,9 +1,10 @@
 'use strict';
-var Path = require('path');
-var fs = require('fs');
-var Minimist = require('minimist');
-var htmlparser = require('htmlparser2');
-var util = require('util');
+const Path = require('path');
+const fs = require('fs');
+const stream = require('stream');
+const Minimist = require('minimist');
+const htmlparser = require('htmlparser2');
+const util = require('util');
 
 var SELFCLOSERS = [
   'area',
@@ -24,66 +25,71 @@ var SELFCLOSERS = [
   'wbr'
 ];
 
-function inlineSVG(path, dest){
-  var buff = '';
+function inlineSVG(path){
+  var source = fs.createReadStream(path, 'utf8');
+  var dest = new stream.PassThrough();
   var parser = new htmlparser.Parser({
     onprocessinginstruction: function(instruction){
-      buff += '<'+instruction+'>';
+      dest.write('<'+instruction+'>', 'utf8');
     },
     onopentag: function(name, attribs){
       if(name == 'img' && attribs.src.endsWith('.svg')){
-        buff += fs.readFileSync(attribs.src, 'utf8');
+        dest.write(fs.readFileSync(attribs.src, 'utf8'));
       }
       else {
-        buff += '<'+name;
+        dest.write('<'+name);
         for(let a in attribs){
-          buff += ' '+a+'="'+attribs[a]+'"';
+          dest.write(' '+a+'="'+attribs[a]+'"', 'utf8');
         }
-        buff += '>';
+        dest.write('>', 'utf8');
       }
     },
     ontext: function(text){
-      buff += text;
+      dest.write(text, 'utf8');
     },
     onclosetag: function(name){
       if(SELFCLOSERS.indexOf(name) != -1){
         //noop
       }
       else {
-        buff += '</'+name+'>';
+        dest.write('</'+name+'>', 'utf8');
       }
     },
     oncomment: function(comment){
-      buff += '<!--'+comment+'-->';
+      dest.write('<!--'+comment+'-->', 'utf8');
     },
     onerror: function(error){
       console.log(error);
     },
     onend: function(){
-      if
-    }
+      dest.end();
+    },
   });
-  fs.createReadStream(path, 'utf8').pipe(parser);
+  source.pipe(parser);
+  return dest;
 }
 
 if(require.main === module){
   var argv = Minimist(process.argv.slice(2));
-  if(argv._.length == 0) {  
+  var dest;
+  if(!argv.o){
+    console.log('Correct usage: node inline-svg [input file] -o [output file]');
+    process.exit(1);
+  }
+  else
+    dest = fs.createWriteStream(argv.o);
+  if(argv._.length == 0) {
+    /* We can assume our input is being piped from stdin */
     var buff = '';
     process.stdin.on('data', function(chunk){
       buff += chunk;
-    })
+    });
     process.stdin.on('end', function(){
-      var files = buff.split(' ');
-      files.forEach(function(path){
-        inlineSVG(path);
-      });
+      inlineSVG(buff).pipe(dest);
     });
   }
   else {
-    argv._.forEach(function(path){
-      inlineSVG(path);
-    });
+    inlineSVG(argv._[0]).pipe(dest);
   }
 }
 else
