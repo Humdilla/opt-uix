@@ -1,0 +1,178 @@
+<!doctype>
+<html>
+<head>
+  <title>Onprocess UIX Suite</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="utf-8">
+  <style>/* latin */
+@font-face {
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bitter-Regular'), url('../fonts/Bitter-latin.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bitter-Regular'), url('../fonts/Bitter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}</style>
+  <style>* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Bitter', serif;
+}
+
+.opt-form {
+  width: max-content;
+}
+
+/* RADIO BUTTON */
+
+.opt-radio {
+  display: none;
+}
+.opt-radio + label {
+  display: block;
+  font-size: 1.5em;
+  color: #577394;
+  background-color: #AAA;
+  transition: color .5s, border-color .5s;
+}
+
+/* Borders */
+.opt-radio + label {
+  border: 2px solid #577394;
+  border-bottom-width: 0px;
+}
+.opt-radio + label:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.opt-radio + label:last-of-type {
+  border-bottom-width: 2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.opt-radio + label:hover {
+  border-width: 2px;
+}
+.opt-radio + label:hover + .opt-radio + label {
+  border-top-width: 0px;
+}
+
+.opt-radio + label svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+}
+
+.opt-radio + label svg > * {
+  stroke: #577394;
+  transition: stroke .5s;
+}
+.opt-radio:checked + label svg {
+  filter: drop-shadow(0px 0px 3px #38ccff);
+}
+.opt-radio:checked + label svg > * {
+  stroke: #38ccff;
+}
+
+.opt-radio:not(:checked) + label:hover {
+  filter: drop-shadow(0px 0px 2px #3eb6e0);
+  border-color: #3eb6e0;
+  color: #3eb6e0;
+}
+.opt-radio:not(:checked) + label:hover svg > * {
+  stroke: #3eb6e0;
+}
+
+.opt-radio:checked + label:hover {
+  filter: drop-shadow(0px 0px 2px #3eb6e0);
+  border-color: #3eb6e0;
+  color: #3eb6e0;
+}
+
+/* BUTTON */
+.opt-button {
+  border: none;
+  font-size: 1.5em;
+  border-radius: 5px;
+}</style>
+</head>
+<body>
+  <form class="opt-form">
+    <input class="opt-radio" type="radio" name="someValue" id="otherRadio" value="value1">
+    <label for="otherRadio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101">
+  <defs>
+    <mask id="circle-mask">
+      <rect x="0" y="0" width="101" height="101" fill="#ffffff"/>
+      <rect x="40" y="0" width="20" height="51" fill="#000000"/>
+    </mask>
+  </defs>
+  <circle cx="50" cy="50" r="40" fill="none" fill-opacity="0" stroke="#666666" stroke-width="10" filter="url(#blur-lines)" mask="url(#circle-mask)"/>
+  <path stroke-width="10" stroke="#138db7" d="
+    M 50 0
+    V 50"/>
+</svg>
+      Value 1
+    </label>
+    <input class="opt-radio" type="radio" name="someValue" id="otherRadio2" value="value2">
+    <label for="otherRadio2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101">
+  <defs>
+    <mask id="circle-mask">
+      <rect x="0" y="0" width="101" height="101" fill="#ffffff"/>
+      <rect x="40" y="0" width="20" height="51" fill="#000000"/>
+    </mask>
+  </defs>
+  <circle cx="50" cy="50" r="40" fill="none" fill-opacity="0" stroke="#666666" stroke-width="10" filter="url(#blur-lines)" mask="url(#circle-mask)"/>
+  <path stroke-width="10" stroke="#138db7" d="
+    M 50 0
+    V 50"/>
+</svg>
+      Value 2
+    </label>
+    <input class="opt-radio" type="radio" name="someValue" id="otherRadio3" value="value3">
+    <label for="otherRadio3">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101">
+  <defs>
+    <mask id="circle-mask">
+      <rect x="0" y="0" width="101" height="101" fill="#ffffff"/>
+      <rect x="40" y="0" width="20" height="51" fill="#000000"/>
+    </mask>
+  </defs>
+  <circle cx="50" cy="50" r="40" fill="none" fill-opacity="0" stroke="#666666" stroke-width="10" filter="url(#blur-lines)" mask="url(#circle-mask)"/>
+  <path stroke-width="10" stroke="#138db7" d="
+    M 50 0
+    V 50"/>
+</svg>
+      Value 3
+    </label>
+    <input class="opt-radio" type="radio" name="someValue" id="otherRadio4" value="value4">
+    <label for="otherRadio4">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101">
+  <defs>
+    <mask id="circle-mask">
+      <rect x="0" y="0" width="101" height="101" fill="#ffffff"/>
+      <rect x="40" y="0" width="20" height="51" fill="#000000"/>
+    </mask>
+  </defs>
+  <circle cx="50" cy="50" r="40" fill="none" fill-opacity="0" stroke="#666666" stroke-width="10" filter="url(#blur-lines)" mask="url(#circle-mask)"/>
+  <path stroke-width="10" stroke="#138db7" d="
+    M 50 0
+    V 50"/>
+</svg>
+      Value 4
+    </label>
+    <button class="opt-button" type="button">I am a button</button>
+  </form>
+  <script async="" data-main="js/main" src="js/require.js"></script>
+</body>
+</html>
